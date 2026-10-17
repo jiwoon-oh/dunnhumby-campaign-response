@@ -92,7 +92,7 @@ The retailer was far more likely to contact high-spending customers, so raw reci
 
 Among the 28 low-spending Type C households, two had zero pre-campaign spending (7.1%). This limits one particular floor-effect concern but does not solve the small-cell problem.
 
-![Campaign reach by spending tier — existing Korean chart](../src/01_reach_rate_by_tier_1.png)
+![Share of households receiving any campaign by baseline spending tier: 25.2% low, 70.9% mid, 94.1% high](images/reach-rate.png)
 
 ### Multicollinearity check: VIF
 
@@ -154,7 +154,7 @@ The other seven comparisons did not pass the 5% threshold. Type C × low spender
 
 The negative fixed-effects estimates differed from the positive raw comparisons. This demonstrates how much household spending levels and common weekly trends mattered in the unadjusted analysis. It does not prove that fixed effects removed all targeting bias.
 
-![Fixed-effects model coefficients and confidence intervals — existing Korean chart](../src/02_forest_plot_stage6.png)
+![Fixed-effects coefficients with 95% confidence intervals for nine campaign type by spending tier combinations; seven of the nine cross zero](images/forest-plot.png)
 
 ## Step 7. Adjust for testing nine interactions
 
@@ -167,7 +167,7 @@ Testing nine hypotheses raises the risk of chance discoveries. I used the Benjam
 
 **Only Type C × high spenders** remained statistically significant after adjusting for nine comparisons. Type B × high is an exploratory finding, not a confirmed second result.
 
-![Multiple-testing adjustment — existing Korean chart](../src/03_bh_correction.png)
+![Raw p-values ranked against the Benjamini-Hochberg threshold; only Type C x High-spending clears it](images/bh-correction.png)
 
 ## Step 8. Placebo test: did Type C cause the decline?
 
@@ -194,7 +194,7 @@ Average high-tier spending was nearly flat in this descriptive comparison. But t
 
 The placebo interval contains zero and also the main estimate of −6.25. In other words, the comparison sample was too small to rule out a pre-existing decline. I cannot report that the placebo test passed or that it definitively failed to find an effect.
 
-![Main estimate and placebo comparison — existing Korean chart](../src/04_placebo_comparison.png)
+![Actual Type C x High-spending estimate (-6.25, n = 295) versus placebo estimate (-4.74, n = 49) with 95% confidence intervals; the placebo interval contains zero](images/placebo-comparison.png)
 
 ## Additional robustness check: first versus repeat exposure
 
