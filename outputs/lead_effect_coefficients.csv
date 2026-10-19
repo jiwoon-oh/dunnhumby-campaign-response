@@ -1,0 +1,4 @@
+term,coef,se,ci_low,ci_high,t_stat,p_value,n_households_with_term,n_household_weeks_with_term,reading
+lead4 (1-4 weeks before first Type C week),-9.021497039906555,2.264232380718207,-13.459342569968523,-4.583651509844586,-3.9843512162143737,6.769292409658512e-05,295,1162,"possible reverse targeting (negative, CI excludes 0)"
+lead8 (5-8 weeks before first Type C week),-1.68688816867863,2.106745709138839,-5.816063295709286,2.4422869583520264,-0.8007080120591149,0.4233018226427614,286,1144,no evidence of pre-decline (CI includes 0)
+"typeC_x_high (same model, leads included)",-7.116005711869646,1.8564603396840296,-10.754627034646953,-3.477384389092339,-3.833104085100355,0.00012658192823544745,295,4463,reference: main-model coefficient was -6.2526

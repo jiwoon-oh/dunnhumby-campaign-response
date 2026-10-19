@@ -6,9 +6,9 @@
 
 Using Dunnhumby's household transactions and campaign records, I examined whether changes in weekly spending during campaign periods differed across **low-, medium-, and high-spending households**. A comparison of households that received campaigns with those that did not would be misleading: a retailer might send more offers to customers who already spend a lot.
 
-I defined spending tiers using pre-campaign data, built a household-week panel, and estimated campaign-by-tier associations using household and week fixed effects with household-clustered standard errors. I then checked pre-trends, adjusted for multiple comparisons, and ran a placebo test.
+I defined spending tiers using pre-campaign data, built a household-week panel, and estimated campaign-by-tier associations using household and week fixed effects with household-clustered standard errors. I then checked pre-trends, adjusted for multiple comparisons, and ran a placebo-style comparison and a lead-effect test.
 
-**The main finding was a negative association between Type C campaigns and weekly spending among high-spending households.** It survived multiple-testing adjustment. However, I could not determine whether the campaign reduced spending or whether the retailer targeted households whose spending had already started to decline. I therefore report an association, not a proven causal effect.
+**The main finding was a negative association between Type C campaigns and weekly spending among high-spending households.** It survived multiple-testing adjustment. However, I could not determine whether the campaign reduced spending or whether the retailer targeted households whose spending had already started to decline. A lead-effect test found lower spending in the four weeks just before households' first Type C week, which is consistent with the second explanation, but not in weeks five to eight. I therefore report an association, not a proven causal effect.
 
 ## 0. Analysis decisions made in advance
 
@@ -60,7 +60,7 @@ Different campaigns also overlapped. This complicates any attempt to isolate the
 
 ## Step 3. Construct the household-week panel
 
-The main panel covered **Weeks 33–101** and contained **172,500 rows**. For each household and week, I aligned spending with indicators for whether each campaign type was active.
+The main panel covered **Weeks 33–101** and contained **172,500 rows**. Week 102 is not in the panel: the data end on day 711, so that week holds only 6 days of transactions. For each household and week, I aligned spending with indicators for whether each campaign type was active.
 
 ### Overlapping exposure
 
@@ -71,7 +71,7 @@ I therefore checked variance inflation before interpreting a regression containi
 
 ### Why the raw percentages were not enough
 
-A simple campaign-week comparison suggested spending increases of **+242% for low**, **+60% for medium**, and **+23% for high** spenders. These comparisons do not adjust for household differences or common shifts in spending. They cannot be interpreted as campaign lift. The fixed-effects estimates later produced a different pattern among high spenders.
+A simple comparison of household-weeks in which **any** of the three campaign types was active with household-weeks in which none was, pooled across households and without fixed effects, gave **+242%** for low spenders ($11.54 → $39.49; 2,924 active versus 54,622 inactive household-weeks), **+60%** for medium spenders and **+23%** for high spenders ($61.68 → $75.61). These comparisons mix households that differ in their usual spending and do not separate campaign types, so they are not campaign lift. They are also **not the unadjusted version of the Step 6 estimates**: those compare each household's weeks with a given campaign type active against its own other weeks, one type at a time (the Type C estimate applies to high spenders only).
 
 ## Step 4. Check campaign-by-tier sample sizes
 
@@ -143,6 +143,22 @@ I clustered standard errors at the household level because multiple observations
 
 The contrast between clustered and non-clustered tests showed why the repeated-measures structure mattered.
 
+### All nine campaign-by-tier estimates
+
+| Campaign type | Spending tier | Households | Coefficient | Clustered SE | 95% CI | Raw p | BH-adjusted p |
+|---|---|---:|---:|---:|---|---:|---:|
+| Type A | Low | 187 | 1.06 | 1.43 | [−1.75, 3.86] | 0.4607 | 0.8055 |
+| Type A | Medium | 554 | 0.82 | 0.69 | [−0.53, 2.17] | 0.2333 | 0.5249 |
+| Type A | High | 772 | −0.16 | 0.77 | [−1.68, 1.35] | 0.8337 | 0.8337 |
+| Type B | Low | 90 | 1.44 | 2.34 | [−3.14, 6.02] | 0.5370 | 0.8055 |
+| Type B | Medium | 305 | 0.42 | 1.36 | [−2.25, 3.09] | 0.7591 | 0.8337 |
+| Type B | High | 628 | −2.43 | 0.97 | [−4.32, −0.54] | 0.0118 | 0.0532 |
+| Type C | Low | 28† | 9.68 | 6.94 | [−3.93, 23.28] | 0.1633 | 0.4898 |
+| Type C | Medium | 74 | −1.22 | 4.36 | [−9.77, 7.33] | 0.7798 | 0.8337 |
+| **Type C** | **High** | 295 | **−6.25** | 1.76 | [−9.70, −2.81] | 0.0004 | **0.0033** |
+
+Coefficients are dollars of weekly spending per household-week with the campaign type active, relative to the household's other weeks. Intervals are 95% intervals **without** multiple-comparison adjustment; seven of the nine include zero. Only the bold row remains significant after Benjamini–Hochberg adjustment. † Fewer than 30 households; read as reference only.
+
 ### Two interactions with unadjusted p-values below 0.05
 
 | Interaction | Coefficient | Raw p-value | Households | Relative to baseline spend |
@@ -152,7 +168,7 @@ The contrast between clustered and non-clustered tests showed why the repeated-m
 
 The other seven comparisons did not pass the 5% threshold. Type C × low spenders, for example, had only 28 households and `p = 0.163`; its estimated coefficient should not be read without its uncertainty.
 
-The negative fixed-effects estimates differed from the positive raw comparisons. This demonstrates how much household spending levels and common weekly trends mattered in the unadjusted analysis. It does not prove that fixed effects removed all targeting bias.
+The raw comparison and the fixed-effects estimates answer different questions, so they should not be read as the same group before and after adjustment. The raw comparison pools every active week of any campaign type within a tier; the fixed-effects model compares a household's Type C weeks with its own other weeks, holding week effects and the other campaign types fixed. Showing what fixed effects change for one group would need a model with a single "any campaign" indicator per tier, which I did not estimate. The estimates do not prove that fixed effects removed all targeting bias.
 
 ![Fixed-effects coefficients with 95% confidence intervals for nine campaign type by spending tier combinations; seven of the nine cross zero](images/forest-plot.png)
 
@@ -169,13 +185,13 @@ Testing nine hypotheses raises the risk of chance discoveries. I used the Benjam
 
 ![Raw p-values ranked against the Benjamini-Hochberg threshold; only Type C x High-spending clears it](images/bh-correction.png)
 
-## Step 8. Placebo test: did Type C cause the decline?
+## Step 8. Checking for a decline that was already under way
 
-There is a competing explanation for the negative Type C result. The retailer might have sent Type C specifically to high-spending households **whose purchases were already declining**. If so, the timing of the campaign would coincide with the decline without causing it.
-
-I used the **916 households that never received a campaign** for a placebo-style comparison.
+There is a competing explanation for the negative Type C result. The retailer might have sent Type C specifically to high-spending households **whose purchases were already declining**. If so, the timing of the campaign would coincide with the decline without causing it. I ran two checks: a comparison among households that never received a campaign, and a lead-effect test on the weeks just before each household's first Type C week.
 
 ### Early-versus-late spending among non-recipients
+
+I used the **916 households that never received a campaign**.
 
 | Tier | Mean, Weeks 33–42 | Mean, Weeks 92–101 | Change |
 |---|---:|---:|---:|
@@ -185,16 +201,27 @@ I used the **916 households that never received a campaign** for a placebo-style
 
 Average high-tier spending was nearly flat in this descriptive comparison. But there were only **49 high-spending non-recipient households**, making it difficult to distinguish different plausible explanations.
 
-### Placebo regression
+### Placebo-style regression among non-recipients
 
-| Estimate | Coefficient | p-value | 95% CI | Households |
+| Term (among non-recipients) | Coefficient | p-value | 95% CI | Households in tier |
 |---|---:|---:|---|---:|
-| Actual Type C × high | **−6.25** | **0.0004** | approx. [−9.7, −2.8] | 295 |
-| Placebo high × late period | −4.74 | 0.261 | **[−13.00, +3.52]** | 49 |
+| Medium × later period | 0.05 | 0.9510 | [−1.60, 1.70] | 243 |
+| High × later period | −4.74 | 0.2609 | [−13.00, 3.52] | 49 |
 
-The placebo interval contains zero and also the main estimate of −6.25. In other words, the comparison sample was too small to rule out a pre-existing decline. I cannot report that the placebo test passed or that it definitively failed to find an effect.
+These coefficients are measured **against the low tier**, and week fixed effects absorb the change common to everyone. Each one is the later-period change of that tier minus the later-period change of low spenders (weeks 67–101 versus earlier weeks). Low-spending non-recipients rose by 165.5% above, so much of the High × later period coefficient can come from low-tier growth rather than from a high-tier decline. It is **not the same quantity as the Step 6 estimate**, which compares a household's Type C weeks with its own other weeks, so I do not compare the two numbers.
 
-![Actual Type C x High-spending estimate (-6.25, n = 295) versus placebo estimate (-4.74, n = 49) with 95% confidence intervals; the placebo interval contains zero](images/placebo-comparison.png)
+### Lead-effect test: spending just before the first Type C week
+
+This test uses the same households and the same kind of comparison as Step 6. For the 295 high-spending households that received Type C, I added two indicators to the main model: **Lead4** (the four weeks before a household's first Type C week) and **Lead8** (weeks five to eight before it). They are estimated with household and week fixed effects, household-clustered standard errors and the same nine campaign-by-tier indicators, so Type A and B activity is controlled as in Step 6. I fixed the reading rule before running it: a 95% interval that includes zero means no evidence of a pre-existing decline; a negative coefficient whose interval excludes zero means reverse targeting is possible.
+
+| Term | Coefficient | Clustered SE | 95% CI | p-value | Households | Reading |
+|---|---:|---:|---|---:|---:|---|
+| Lead4 (weeks −4 to −1) | **−9.02** | 2.26 | [−13.46, −4.58] | <0.0001 | 295 | Reverse targeting is possible |
+| Lead8 (weeks −8 to −5) | −1.69 | 2.11 | [−5.82, 2.44] | 0.4233 | 286 | No evidence of a pre-existing decline |
+
+Spending in the four weeks just before a household's first Type C week was about $9.02 lower per week than in its other weeks, with an interval that excludes zero. The weeks five to eight before showed no detectable difference. The two lead coefficients together differ from zero (joint Wald test p = 0.0003). With the leads included, the Type C × high coefficient is −7.12 (95% CI [−10.75, −3.48]) rather than −6.25. I ran two tests and did not adjust for multiple comparisons.
+
+Limitation: 260 of the 295 households had a Type A or B campaign active in the Lead4 weeks (82% of those household-weeks), so a dip before Type C cannot be separated from anticipation or from the effect of those campaigns. For 9 households the lead windows begin before Week 33, outside the panel.
 
 ## Additional robustness check: first versus repeat exposure
 
@@ -214,7 +241,7 @@ The negative association appeared in both subsets. The more negative repeat-expo
 **Plausible competing explanations:**
 
 1. Type C may encourage customers to postpone purchases or wait for discounts.
-2. Type C may have been sent to households that were already reducing their spending.
+2. Type C may have been sent to households that were already reducing their spending. The lead-effect test in Step 8 found lower spending in the four weeks before exposure.
 3. Other time-varying conditions may affect both campaign selection and spending.
 
 The data do not separate these explanations convincingly. The result is a **statistically detectable association**, not an established causal campaign effect.
@@ -241,6 +268,6 @@ The literature on two-way fixed effects has shown that staggered treatment timin
 - Pre-trend testing and correction of a denominator bug
 - Household and week fixed effects with household-clustered standard errors
 - Nine interaction estimates and Benjamini–Hochberg adjustment
-- Non-recipient placebo analysis; first versus repeat exposure checks
+- Non-recipient comparison, lead-effect test, and first versus repeat exposure checks
 
 **Bottom line:** Type C exposure coincided with a decline in high-spending households' weekly purchases. I cannot infer from this dataset alone that Type C caused the decline.

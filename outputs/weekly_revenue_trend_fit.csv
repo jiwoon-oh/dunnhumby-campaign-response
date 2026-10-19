@@ -1,0 +1,2 @@
+stable_min_week,stable_max_week,first_week,last_week,slope_per_week,intercept,r_squared,p_value,trend_start,trend_end,trend_pct_change
+17,99,1,102,142.68483711850882,78563.84908568072,0.2781908487536172,3.0034542249853355e-07,80989.49131669536,92689.64796041309,14.446512076444943

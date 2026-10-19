@@ -1,0 +1,13 @@
+group,variable,vif
+type_dummies,active_TypeA,1.0626368257279095
+type_dummies,active_TypeB,1.0896355114823288
+type_dummies,active_TypeC,1.0713892141506913
+type_x_tier,TypeA_x_low,1.0443148500078203
+type_x_tier,TypeA_x_mid,1.0361246446124288
+type_x_tier,TypeA_x_high,1.079770642673006
+type_x_tier,TypeB_x_low,1.0377788475424379
+type_x_tier,TypeB_x_mid,1.0395425685280468
+type_x_tier,TypeB_x_high,1.1174511735420192
+type_x_tier,TypeC_x_low,1.0161834830532837
+type_x_tier,TypeC_x_mid,1.0238218794881737
+type_x_tier,TypeC_x_high,1.0986251193796177

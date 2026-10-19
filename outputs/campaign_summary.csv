@@ -1,0 +1,2 @@
+n_households,n_recipients,n_never_recipients,n_multi_type_recipients,pct_multi_type_of_recipients,n_campaigns,first_start_week,last_end_week,n_started_before_camp_window
+2500,1584,916,1008,63.63636363636363,30,33,102,0

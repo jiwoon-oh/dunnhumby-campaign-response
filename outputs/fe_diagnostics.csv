@@ -1,0 +1,2 @@
+n_obs,n_households,n_weeks,r_squared_within,poolability_f,poolability_p,f_stat_nonrobust,f_p_nonrobust,f_stat_clustered,f_p_clustered
+172500,2500,69,0.00042814526981449497,38.138246024542916,0.0,11.544100716332615,0.0,2.3130875970599027,0.013488496260043115

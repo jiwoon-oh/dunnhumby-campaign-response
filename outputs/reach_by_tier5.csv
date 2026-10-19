@@ -1,0 +1,6 @@
+tier,n_recipients,n_households,reach_pct
+q1 (lowest),89,500,17.8
+q2,208,500,41.6
+q3,353,500,70.6
+q4,453,500,90.6
+q5 (highest),481,500,96.2

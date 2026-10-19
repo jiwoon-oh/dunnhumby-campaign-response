@@ -6,3 +6,7 @@ __pycache__/
 .ipynb_checkpoints/
 .claude/
 .env
+
+# model artifacts and intermediate outputs (result CSVs in outputs/ are tracked)
+*.pkl
+outputs/intermediate/
