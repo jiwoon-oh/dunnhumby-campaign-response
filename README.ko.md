@@ -274,6 +274,7 @@ Type C·고지출 조합을 첫 노출과 재노출로 나눠 다시 살펴봤�
 
 ```
 pip install -r requirements.txt
+pip install jupyter
 ```
 
 버전은 노트북을 실행한 Python 3.11 환경 기준으로 고정했다.

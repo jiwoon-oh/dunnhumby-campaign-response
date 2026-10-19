@@ -19,9 +19,10 @@ CAMP_MIN_WEEK, CAMP_MAX_WEEK = 33, 101     # campaign observation window (week 1
 MID_WEEK = (CAMP_MIN_WEEK + CAMP_MAX_WEEK) // 2   # split point of the placebo comparison
 CELL_SIZE_THRESH = 30                      # campaign-by-tier cells below this are treated as reference-only
 
-TIER3_ORDER = ["저지출", "중지출", "고지출"]
-TIER5_ORDER = ["1분위(최저)", "2분위", "3분위", "4분위", "5분위(최고)"]
-TIER_EN = {"저지출": "low", "중지출": "mid", "고지출": "high"}
+# Tier labels are the English names written to the CSVs. TIER_EN is kept as the label map applied when saving.
+TIER3_ORDER = ["low", "mid", "high"]
+TIER5_ORDER = ["q1 (lowest)", "q2", "q3", "q4", "q5 (highest)"]
+TIER_EN = {"low": "low", "mid": "mid", "high": "high"}
 
 
 def _as_tiers(df):
