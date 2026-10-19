@@ -270,6 +270,24 @@ Type C·고지출 조합을 첫 노출과 재노출로 나눠 다시 살펴봤�
 
 시차를 두고 캠페인이 도입되는 패널에서 이원고정효과(TWFE)에 문제가 생길 수 있다는 방법론적 논의가 있다. 다만 이 데이터는 여러 번 켜지고 꺼지는 캠페인 노출이라 전형적인 '처리 후 영구 처리' 설계와도 다르다. 후속 분석에서는 캠페인별 최초 노출을 기준으로 비교집단과 시간을 더 엄밀하게 정하거나, 가능하다면 실험군과 무작위 미발송 대조군을 확보해야 한다.
 
+## 실행 방법
+
+```
+pip install -r requirements.txt
+```
+
+버전은 노트북을 실행한 Python 3.11 환경 기준으로 고정했다.
+
+1. Dunnhumby *The Complete Journey* CSV를 `data/`에 내려받는다(`data/README.md` 참고). git에는 올라가지 않는다.
+2. 저장소 루트에서 아래 순서로 노트북을 실행한다. 경로와 `SEED = 42`는 `config.py`에서 정한다. 뒤쪽 노트북은 앞선 노트북이 `outputs/`에 쓴 CSV를 다시 쓴다.
+
+   ```
+   python -m nbconvert --to notebook --execute --inplace <notebook>.ipynb
+   ```
+
+   `dunnhumby_data_overview`, `h2_stage1_2_tier_campaign_mapping`, `h2_stage3_panel`, `h2_stage4_cell_size`, `h2_stage5_pretrend`, `h2_stage6_main_regression`, `h2_stage7_multiple_comparison`, `h2_stage8_placebo_test`, 마지막으로 `h2_figures`(`images/`의 모든 그림을 `outputs/`에서 그림, `TRANSPARENT = True`로 바꾸면 투명 배경 버전).
+3. 결과 CSV는 `outputs/`에 저장된다. 가구 단위 중간 파일은 `outputs/intermediate/`에 저장되며 커밋하지 않는다.
+
 ## 사용한 분석 방법
 
 - 가구별 캠페인 이전 지출 기반 세그먼트 고정

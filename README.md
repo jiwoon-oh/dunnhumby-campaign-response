@@ -272,6 +272,24 @@ The data do not separate these explanations convincingly. The result is a **stat
 
 The literature on two-way fixed effects has shown that staggered treatment timing can cause misleading estimates in certain designs. This panel also contains recurring campaigns that switch on and off, rather than a single permanently adopted treatment; it is not identical to the textbook staggered-adoption case. A stronger follow-up would define exposure timing and comparison groups more carefully, or ideally run a randomized holdout with some households not receiving the campaign.
 
+## How to run
+
+```
+pip install -r requirements.txt
+```
+
+The pinned versions are those of the Python 3.11 environment the notebooks were run in.
+
+1. Download the Dunnhumby *The Complete Journey* CSVs into `data/` (see `data/README.md`). They are git-ignored.
+2. Run the notebooks from the repository root in this order. `config.py` sets all paths and `SEED = 42`. Later notebooks reuse CSVs that earlier ones wrote to `outputs/`.
+
+   ```
+   python -m nbconvert --to notebook --execute --inplace <notebook>.ipynb
+   ```
+
+   `dunnhumby_data_overview`, `h2_stage1_2_tier_campaign_mapping`, `h2_stage3_panel`, `h2_stage4_cell_size`, `h2_stage5_pretrend`, `h2_stage6_main_regression`, `h2_stage7_multiple_comparison`, `h2_stage8_placebo_test`, then `h2_figures` (draws every figure in `images/` from `outputs/`; set `TRANSPARENT = True` for transparent versions).
+3. Result CSVs go to `outputs/`. Household-level intermediate files go to `outputs/intermediate/` and are not committed.
+
 ## Methods covered
 
 - Pre-campaign spending segmentation
