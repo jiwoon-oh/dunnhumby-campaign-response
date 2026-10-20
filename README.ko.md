@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+전체 케이스 스터디(영문): https://jiwoon-oh.github.io/portfolio/projects/dunnhumby-customer/case2/
+
 ## 분석 질문
 
 Dunnhumby의 고객·구매·캠페인 데이터를 이용해 **같은 캠페인을 받더라도 평소 지출이 높은 고객과 낮은 고객의 반응이 다른지** 확인했다. 단순히 캠페인을 받은 가구의 매출이 높았는지 보는 것으로는 충분하지 않았다. 원래 돈을 많이 쓰는 가구가 캠페인 대상으로 더 자주 선정됐을 수 있기 때문이다.

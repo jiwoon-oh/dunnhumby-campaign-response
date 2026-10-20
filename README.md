@@ -2,6 +2,8 @@
 
 [한국어](README.ko.md)
 
+Full case study: https://jiwoon-oh.github.io/portfolio/projects/dunnhumby-customer/case2/
+
 ## Research question
 
 Using Dunnhumby's household transactions and campaign records, I examined whether changes in weekly spending during campaign periods differed across **low-, medium-, and high-spending households**. A comparison of households that received campaigns with those that did not would be misleading: a retailer might send more offers to customers who already spend a lot.
