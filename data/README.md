@@ -13,4 +13,4 @@ The CSV files are not in this repository (they are git-ignored). Download them a
 
 Household-level files that the notebooks write (for example `campaign_households.csv`) go to `outputs/intermediate/` and are git-ignored.
 
-Why the files are not here: the dunnhumby page shows no redistribution terms, so I do not redistribute the data, and the main table is large. Please check dunnhumby's terms on that page before reuse.
+Raw files are not included in this repository; download them from the source above.
