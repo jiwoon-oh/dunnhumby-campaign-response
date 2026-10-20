@@ -1,6 +1,6 @@
 # Did Campaign Type and Prior Spending Level Affect Weekly Household Sales Differently?
 
-[한국어](README.ko.md) · [Project folder](https://github.com/jiwoon-oh/ai-data-bootcamp/tree/main/project-dunnhumby/campaign-customer)
+[한국어](README.ko.md)
 
 ## Research question
 

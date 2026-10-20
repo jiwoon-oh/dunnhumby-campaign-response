@@ -1,6 +1,6 @@
 # 캠페인 유형과 고객 지출 수준에 따라 매출 변화가 달랐을까?
 
-[English](README.md) · [원본 프로젝트 폴더](https://github.com/jiwoon-oh/ai-data-bootcamp/tree/main/project-dunnhumby/campaign-customer)
+[English](README.md)
 
 ## 분석 질문
 
