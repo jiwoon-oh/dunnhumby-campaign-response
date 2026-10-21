@@ -8,7 +8,7 @@ This repository covers the campaign-by-tier analysis, my contribution to a team 
 
 ## Research question
 
-Using Dunnhumby's household transactions and campaign records, I examined whether changes in weekly spending during campaign periods differed across **low-, medium-, and high-spending households**. A comparison of households that received campaigns with those that did not would be misleading: a retailer might send more offers to customers who already spend a lot.
+Using Dunnhumby's household transactions and campaign records, I examined whether changes in weekly spending during campaign periods differed across **low-, medium-, and high-spending households**. A comparison of households that received campaigns with those that did not could be misleading: a retailer might send more offers to customers who already spend a lot.
 
 I defined spending tiers using pre-campaign data, built a household-week panel, and estimated campaign-by-tier associations using household and week fixed effects with household-clustered standard errors. I then checked pre-trends, applied a multiple-comparison correction, and ran a placebo-style comparison and a lead-effect test.
 
@@ -22,7 +22,7 @@ I defined spending tiers using pre-campaign data, built a household-week panel, 
 | Household fixed effects | Account for persistent differences in average spending between households |
 | Week fixed effects | Account for common seasonal and calendar-related changes |
 | Cluster standard errors by household | Weekly observations within one household are correlated |
-| Use three tiers for the main model and five quintiles as a check | Small campaign-by-tier cells become unstable with too much segmentation |
+| Use three tiers for the main model; examine five quintiles descriptively (sample sizes, reach) | Two Type C cells fall below 30 households under quintiles (16 and 25), so fixed-effects models were estimated on three tiers only |
 | Correct nine statistical comparisons | Reduce false discoveries from testing many campaign interactions |
 
 Fixed effects do not remove every type of selection bias. Unobserved factors that change within a household over time and affect both campaign targeting and spending can still influence the estimates.
@@ -87,7 +87,7 @@ A simple comparison of household-weeks in which **any** of the three campaign ty
 | Medium | 554 | 305 | 74 |
 | High | 772 | 628 | 295 |
 
-Only 28 low-spending households received Type C. With five spending quintiles, the lowest two Type C cells had only **16 and 25 households**. This confirmed that a three-tier model was more appropriate for the main analysis.
+Only 28 low-spending households received Type C. With five spending quintiles, the lowest two Type C cells would have had only **16 and 25 households**, below the 30-household threshold. Quintiles were therefore used only descriptively, and the fixed-effects models use three tiers. (Even in the three-tier model, Type C × Low, at 28 households, remains slightly below the threshold.)
 
 ![Heatmap of households receiving each campaign type by spending tier: Type A 187, 554 and 772; Type B 90, 305 and 628; Type C 28, 74 and 295 for low, medium and high spenders, with Type C × Low (28) flagged as below 30](images/sample-heatmap.png)
 
@@ -96,7 +96,7 @@ Targeting was strongly related to pre-campaign spending:
 - Campaign reach among low spenders: **25.2%**
 - Campaign reach among high spenders: **94.1%**
 
-The retailer was far more likely to contact high-spending customers, so raw recipient/non-recipient comparisons are not credible as causal estimates.
+The retailer was far more likely to contact high-spending customers, so raw recipient/non-recipient comparisons cannot be read as causal estimates.
 
 Among the 28 low-spending Type C households, two had zero pre-campaign spending (7.1%). This limits one particular floor-effect concern but does not solve the small-cell problem.
 
@@ -209,7 +209,7 @@ I used the **916 households that never received a campaign**.
 | Medium | $11.27 | $17.33 | +53.8% |
 | High | $43.96 | $43.54 | −1.0% |
 
-Average high-tier spending was nearly flat in this descriptive comparison. But there were only **49 high-spending non-recipient households**, making it difficult to distinguish different plausible explanations.
+Average high-tier spending was nearly flat in this descriptive comparison. However, there were only **49 high-spending non-recipient households**, which makes it difficult to distinguish between plausible explanations.
 
 ### Placebo-style regression among non-recipients
 
@@ -244,7 +244,7 @@ I separated initial Type C exposure from repeat exposure within the high-spendin
 | First exposure | 295 | −4.89 | 0.009 |
 | Repeat exposure | 131 | −9.09 | 0.003 |
 
-The negative association appeared in both subsets. The more negative repeat-exposure coefficient does not establish an accumulating campaign effect. Households already experiencing a decline could have been targeted more often.
+The negative association appeared in both subsets. The more negative repeat-exposure coefficient does not establish an accumulating campaign effect, since households already experiencing a decline could have been targeted more often.
 
 ## Interpretation
 
