@@ -4,7 +4,7 @@
 
 Full case study: https://jiwoon-oh.github.io/portfolio/projects/dunnhumby-customer/case2/
 
-This repository covers the campaign-by-tier analysis, my contribution to a team project. Other hypotheses were handled by other team members.
+This repository covers a campaign-by-tier analysis of the Dunnhumby data, which grew out of a team project in which hypotheses were divided among team members. The lead-effect test and the single-source pipeline were added after the team project.
 
 ## Research question
 
@@ -222,7 +222,7 @@ These coefficients are measured **against the low tier**, and week fixed effects
 
 ### Lead-effect test: spending just before the first Type C week
 
-This test uses the same households and the same kind of comparison as Step 6. For the 295 high-spending households that received Type C, I added two indicators to the main model: **Lead4** (the four weeks before a household's first Type C week) and **Lead8** (weeks five to eight before it). They are estimated with household and week fixed effects, household-clustered standard errors and the same nine campaign-by-tier indicators, so Type A and B activity is controlled as in Step 6. I fixed the reading rule before running it: a 95% interval that includes zero means no evidence of a pre-existing decline; a negative coefficient whose interval excludes zero means reverse targeting is possible.
+This test uses the same households and the same kind of comparison as Step 6. For the 295 high-spending households that received Type C, I added two indicators to the main model: **Lead4** (the four weeks before a household's first Type C week) and **Lead8** (weeks five to eight before it). They are estimated with household and week fixed effects, household-clustered standard errors and the same nine campaign-by-tier indicators, so Type A and B activity is controlled as in Step 6. The reading rule is recorded in the notebook (h2_stage6_main_regression, step 5): a 95% interval that includes zero means no evidence of a pre-existing decline; a negative coefficient whose interval excludes zero means reverse targeting is possible.
 
 | Term | Coefficient | Clustered SE | 95% CI | p-value | Households | Reading |
 |---|---:|---:|---|---:|---:|---|
@@ -286,7 +286,7 @@ pip install jupyter
 The pinned versions are those of the Python 3.11 environment the notebooks were run in.
 
 1. Download the Dunnhumby *The Complete Journey* CSVs into `data/` (see `data/README.md`). They are git-ignored.
-2. Run the notebooks from the repository root in this order. `config.py` sets all paths and `SEED = 42`. Later notebooks reuse CSVs that earlier ones wrote to `outputs/`.
+2. Run the notebooks from the repository root in this order. `config.py` sets all paths (no notebook draws random numbers). Later notebooks reuse CSVs that earlier ones wrote to `outputs/`.
 
    ```
    python -m nbconvert --to notebook --execute --inplace <notebook>.ipynb
